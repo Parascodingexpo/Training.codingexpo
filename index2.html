@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tab Components</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
+:root {
+  --container: 120rem;
+  --primary: hsl(201.43, 13.21%, 58.43%);
+  --white: hsl(0, 0%, 100%);
+  --white-light: hsl(0, 0%, 99%);
+  --box-shadow: hsl(220, 7.32%, 91.96%);
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: 'Quicksand', sans-serif;
+  background: var(--box-shadow);
+}
+.container {
+  width: 90%;
+  padding: 0 2rem;
+}
+header {
+  text-align: center;
+}
+.section-heading {
+  margin: 3rem 0;
+  font-size: 4rem;
+  padding-bottom: 0.7rem;
+  position: relative;
+  display: inline-block;
+}
+.section-heading::before,
+.section-heading::after {
+  content: '';
+  position: absolute;
+}
+.section-heading::before {
+  width: 100%;
+  height: 0.2rem;
+  bottom: 0;
+  left: 0;
+  background: var(--primary);
+  border-radius: 0.2rem;
+}
+.section-heading::after {
+  bottom: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 1rem;
+  border: 0.2rem solid var(--primary);
+  background: var(--box-shadow);
+}
+.tab-container {
+  width: 70%;
+  margin: 0 auto 3rem auto;
+  box-shadow: 0 0.8rem 1rem var(--box-shadow);
+}
+@media (max-width: 767px) {
+  .tab-container {
+    width: 90%;
+  }
+}
+.tab-filter-container {
+  padding: 2rem;
+  text-align: center;
+  background: hsl(205.71, 30.43%, 95.49%);
+}
+.filter-btn {
+  display: inline-flex;
+  padding: 0.8rem 2.5rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--white);
+}
+.tab-filter-item-container {
+  background: var(--white);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.tab-item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 0rem 3rem;
+  transform: translateY(100%);
+  background: var(--white-light);
+  transition: transform 0.5s ease-in-out;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+  place-items: center start;
+}
+.tab-img {
+  width: 30rem;
+}
+.tab-heading {
+  padding: 2rem 0;
+  font-size: 3rem;
+}
+.tab-item.select_tab {
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out;
+  background: var(--white-light);
+  animation: feadIn 0.6s ease-in-out;
+}
+.btn-primary {
+  margin-top: 1.5rem;
+  display: inline-block;
+  background: var(--primary);
+  padding: 0.6rem 2rem;
+  border-radius: 2rem;
+  color: var(--white);
+}
+@keyframes feadIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.verify_certificate{
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+}
+    </style>
+  </head>
+  <body>
+<!-- Main Content Starts-->
+
+    <div class="container">
+      <header>
+        <h1 class="section-heading">Certificates</h1>
+      </header>
+    </div>
+    <div class="container">
+      <div class="tab-container">
+        <div class="tab-filter-container">
+          <li class="filter-btn active" data-tab="req_certificate">
+            <ion-icon name="desktop-outline"></ion-icon>
+            Request For Certificates</li>
+          <li class="filter-btn" data-tab="view_certificate">
+            <ion-icon name="logo-nodejs"></ion-icon>
+            View Your Certificates
+          </li>
+          <li class="filter-btn" data-tab="verify_certificate">
+            <ion-icon name="diamond-outline"></ion-icon>
+            Verify Certificate
+          </li>
+        </div>
+        <div class="tab-filter-item-container">
+          <div class="tab-item req_certificate select_tab">
+            <form method="" action="#" class="formStyle mt-5">
+              <input name="" type="hidden" value="">
+              <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 my-3">
+                      <label for="fullName">Student Name</label>
+                      <input type="text" name="fullName" id="fullName" class="form-control">
+                  </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 my-3">
+                      <label for="StudentId">Student ID</label>
+                      <input type="number" name="StudentId" id="StudentId" class="form-control">
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 my-3">
+                      <label for="NameOfCourse">Name of Course </label>
+                      <input type="text" name="NameOfCourse" id="NameOfCourse" class="form-control">
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 my-3">
+                      <label for="phoneNum">Mobile Number</label>
+                      <input type="tel" name="phoneNum" id="phoneNum" class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12 col-lg-6 col-md-6 my-3">
+                    <select style="font-size: 1.5rem;" class="form-select" aria-label="Default select example">
+                      <option selected>Select Branch</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                </div>
+                </div>
+              <div class="row">
+                  <div class="col-xl-4 col-lg-4 col-md-4">
+                      <label for="fromDate">Course Start Date</label>
+                      <input type="date" class="" name="fromDate" required="" autocomplete="no" id="fromDate">
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-4">
+                      <label for="toDate">Course End Date</label>
+                      <input type="date" class="" name="toDate" required="" autocomplete="no" id="toDate">
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-4">
+                      <label for="facility">Name of the Faculty</label>
+                      <input type="text" name="facility" id="facility" required="" autocomplete="no">
+                  </div>
+              </div>
+              <div class="row justify-content-center my-3">
+                  <div class="col-xl-4 col-lg-4 col-md-4 my-2">
+                      
+                      <div class="text-center">
+                          <input type="submit" value="Submit" class=" btn-primary">
+                      </div>
+                  </div>
+              </div>
+          </form>
+          </div>
+
+
+
+
+
+
+
+
+          <div class="tab-item view_certificate" style="top: -60px;">
+            <div class="row align-items-center" style="top: 120px;width: 101%;position: absolute;padding: 0px 30px;">
+
+            <div class="col-xl-12 col-lg-12 col-md-12 my-3">
+                <label for="fullName">Student Name</label>
+                <input type="text" name="fullName" id="fullName" class="form-control">
+            </div>
+          <div class="col-xl-12 col-lg-12 col-md-12 my-3">
+              <label for="StudentId2">Student ID</label>
+            <input type="number" name="StudentId2" id="StudentId2" class="form-control">
+          </div>
+
+            <div class="text-center">
+              <a class="btn-primary" >Search</a>
+            </div>
+          </div>
+          </div>
+
+
+
+
+
+
+
+
+          <div class="tab-item verify_certificate">
+            <div class="col-12 my-3 w-100" >
+              <label for="certificateNo">Certificate Number</label>
+              <input type="text" name="certificateNo" id="certificateNo" class="form-control">
+            </div>
+            <br>
+            <div class="text-center">
+              <a class="btn-primary" >Search</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+<!-- Main Content End -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+
+let filter_btn = document.querySelectorAll('.filter-btn');
+let tab_items = document.querySelectorAll('.tab-item');
+
+for (let i = 0; i < filter_btn.length; i++) {
+  filter_btn[i].addEventListener('click', function () {
+    for (let j = 0; j < filter_btn.length; j++) {
+      filter_btn[j].classList.remove('active');
+    }
+    let select_tab = filter_btn[i].getAttribute('data-tab');
+    filter_btn[i].classList.add('active');
+    for (let t = 0; t < tab_items.length; t++) {
+      document.querySelector('.tab-filter-item-container').style.height =
+        tab_items[t].scrollHeight + 'px';
+      if (tab_items[t].classList.contains(select_tab)) {
+        tab_items[t].classList.add('select_tab');
+      } else {
+        tab_items[t].classList.remove('select_tab');
+      }
+    }
+  });
+}
+
+for (let th = 0; th < tab_items.length; th++) {
+  document.querySelector('.tab-filter-item-container').style.height =
+    tab_items[th].scrollHeight + 'px';
+}
+    </script>
+  </body>
+</html>
